@@ -26,7 +26,7 @@ module.exports = function toReadable(number) {
         1: "one",
         2: "twen",
         3: "thir",
-        4: "four",
+        4: "for",
         5: "fif",
         6: "six",
         7: "seven",
@@ -61,7 +61,7 @@ module.exports = function toReadable(number) {
                 return digitsAsStrTo20[dozens[0]] + postfix[1];
 
             let firstDigits = dozens[0];
-            let secondDigits = dozens[1];
+            let secondDigits = dozens[1][0] === "0" ? dozens[1][1] : dozens[1];
 
             return (
                 digitsAsStrTo20[firstDigits] +
@@ -93,7 +93,5 @@ module.exports = function toReadable(number) {
         words.push(str);
     }
 
-    let result = words.reverse().join("").trim();
-
-    return result;
+    return words.reverse().join("").trim();
 };
